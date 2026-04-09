@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DPP | Support Navigation</title>
+    <title>DPP | MicroStrategy Support Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .hidden { display: none; }
@@ -17,27 +17,39 @@
 
     <nav class="disney-dark py-4 px-8 flex justify-between items-center shadow-lg text-white">
         <div class="flex items-center space-x-2">
-            <div class="bg-white text-slate-900 font-bold p-1 rounded text-sm">DPP</div>
-            <span class="font-bold tracking-tight">MicroStrategy Support Portal</span>
+            <div class="bg-white text-slate-900 font-bold p-1 rounded text-sm tracking-tighter">DPP</div>
+            <div class="flex flex-col">
+                <span class="font-bold tracking-tight leading-none text-sm">Support Portal</span>
+                <span class="text-[9px] uppercase tracking-widest text-indigo-300 mt-1 font-black italic">MicroStrategy Requests Only</span>
+            </div>
         </div>
-        <span class="text-xs font-medium text-slate-400 uppercase tracking-widest">Data Product Platforms</span>
+        <span class="text-xs font-medium text-slate-400 uppercase tracking-widest hidden md:block">Data Product Platforms</span>
     </nav>
 
-    <main class="max-w-4xl mx-auto py-12 px-6">
+    <main class="max-w-5xl mx-auto py-12 px-6">
         
         <section id="intro" class="page-section fade-in">
-            <h1 class="text-4xl font-extrabold text-slate-950 mb-6 tracking-tighter italic">How can we help you today?</h1>
-            <p class="text-lg text-slate-600 mb-10 leading-relaxed">Select the option that best describes your current business need. This ensures your request is routed and funded correctly.</p>
+            <h1 class="text-4xl font-extrabold text-slate-950 mb-6 tracking-tighter italic leading-tight">
+                How can the Data Products and Platforms (DPP) team help you today?
+            </h1>
+            <p class="text-lg text-slate-600 mb-10 leading-relaxed max-w-3xl">
+                Select the option that best describes your current business need. This ensures your request is <strong>routed and funded properly</strong> within the Data Products and Platforms team.
+            </p>
             
             <div class="grid grid-cols-1 gap-6">
                 <button onclick="goPath('path-broken')" class="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-red-500 hover:shadow-xl transition text-left group">
                     <span class="block text-2xl font-bold group-hover:text-red-600 mb-2 italic">"My report is broken or the data is incorrect."</span>
-                    <span class="text-slate-500">For existing reports that were previously working but now have technical or data issues.</span>
+                    <span class="text-slate-500 italic">For issues with existing production reports that were previously functional.</span>
                 </button>
 
                 <button onclick="goPath('path-new')" class="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-indigo-500 hover:shadow-xl transition text-left group">
                     <span class="block text-2xl font-bold group-hover:text-indigo-600 mb-2 italic">"I need to add new data or build a new report."</span>
-                    <span class="text-slate-500">For new columns, new data views, or brand-new dashboard requests.</span>
+                    <span class="text-slate-500 italic">For incremental requests: new reports, new columns, or data views that do not exist today.</span>
+                </button>
+
+                <button onclick="goPath('path-platform')" class="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-amber-500 hover:shadow-xl transition text-left group">
+                    <span class="block text-2xl font-bold group-hover:text-amber-600 mb-2 italic">"I need Platform or MicroStrategy Cloud support."</span>
+                    <span class="text-slate-500 italic">For system access, environment performance, or MSTR Cloud infrastructure queries.</span>
                 </button>
             </div>
         </section>
@@ -46,38 +58,36 @@
             <button onclick="goBack('intro')" class="flex items-center text-sm font-black text-indigo-700 hover:text-indigo-900 uppercase tracking-wider group">
                 <span class="mr-2 transition-transform group-hover:-translate-x-1">←</span> Previous Page
             </button>
-            
-            <h2 class="text-3xl font-extrabold italic tracking-tight">Report Issue Details</h2>
-            
-            <div class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-xl">
-                <h3 class="font-bold text-blue-800 mb-2 underline italic">Priority & Funding Guidance</h3>
-                <p class="text-sm text-blue-700 leading-relaxed">
-                    <strong>Critical (OGM Covered):</strong> Reports broken recently with immediate impact. A business tester <u>must</u> be on standby.<br><br>
-                    <strong>Standard (OGM Covered):</strong> Reports broken for weeks/months with no immediate urgency.
-                </p>
+            <h2 class="text-3xl font-extrabold italic tracking-tight text-slate-900">Report Issue Details</h2>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-8 rounded-r-2xl text-sm text-blue-800 leading-relaxed shadow-sm">
+                <h3 class="font-bold text-blue-900 mb-2 underline italic tracking-tight">Support Funding & Service Level Guidance</h3>
+                <p>All requests regarding existing reports are covered under <strong>Sustainment Funding</strong>. Resolution timelines are dictated by severity:</p>
+                <ul class="list-disc ml-5 mt-3 space-y-2">
+                    <li><strong>Critical Priority:</strong> Recent production outages. Requires a <strong>tester on standby</strong> immediately.</li>
+                    <li><strong>Standard Priority:</strong> Legacy issues existing for weeks/months without immediate urgency.</li>
+                </ul>
             </div>
-
             <div class="space-y-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
                 <div>
-                    <label class="block font-bold mb-2">1. Log your Incident</label>
-                    <p class="text-sm text-slate-500 mb-4 italic text-xs">You must log a ticket at dtools.it.disney.com before proceeding.</p>
-                    <a href="https://dtools.it.disney.com" target="_blank" class="inline-block bg-slate-900 text-white px-4 py-2 rounded font-bold text-sm hover:bg-slate-700 transition">Open Dtools</a>
+                    <label class="block font-bold mb-1 italic text-slate-700">1. Log Ticket in ServiceNow</label>
+                    <a href="https://disney.service-now.com/dtoolsitsp?id=report_an_issue" target="_blank" class="inline-block bg-slate-900 text-white px-5 py-2.5 rounded font-bold text-sm hover:bg-slate-700 transition mt-2">Report an Issue</a>
                 </div>
-
                 <div>
-                    <label class="block font-bold mb-2">2. Enter Incident Number (INC#)</label>
-                    <input type="text" placeholder="INC1234567" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-blue-500 outline-none font-mono">
+                    <label class="block font-bold mb-2 italic text-slate-700">2. Incident Number (INC#)</label>
+                    <input type="text" placeholder="INC#######" class="w-full p-3 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-blue-500 font-mono">
                 </div>
-
-                <div>
-                    <label class="block font-bold mb-2">3. Is a tester on standby right now?</label>
+                <div class="space-y-4 pt-4 border-t">
+                    <label class="block font-bold italic text-sm text-slate-700 text-slate-700">3. Triage Readiness</label>
                     <div class="flex space-x-6">
-                        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="tester" class="h-4 w-4"> <span>Yes</span></label>
-                        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="tester" class="h-4 w-4"> <span>No</span></label>
+                        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="tester" onclick="toggleTesterEmail(true, 'broken')" class="h-4 w-4"> <span>Yes, Tester is on Standby</span></label>
+                        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="tester" onclick="toggleTesterEmail(false, 'broken')" class="h-4 w-4"> <span>No</span></label>
+                    </div>
+                    <div id="tester-email-broken" class="hidden fade-in pt-2">
+                        <label class="block font-bold mb-2 italic text-xs text-slate-500 uppercase tracking-widest">Tester Contact Email</label>
+                        <input type="email" placeholder="tester.email@disney.com" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-blue-500">
                     </div>
                 </div>
-
-                <button onclick="showFinal('Lancy / Adam', 'path-broken')" class="w-full disney-blue text-white font-bold py-4 rounded-xl shadow-lg hover:opacity-90 transition uppercase tracking-widest">Notify Engineering Team</button>
+                <button onclick="showFinal('Engineering')" class="w-full disney-blue text-white font-bold py-4 rounded-xl shadow-lg hover:opacity-90 transition uppercase tracking-widest">Route for Technical Review</button>
             </div>
         </section>
 
@@ -85,51 +95,109 @@
             <button onclick="goBack('intro')" class="flex items-center text-sm font-black text-indigo-700 hover:text-indigo-900 uppercase tracking-wider group">
                 <span class="mr-2 transition-transform group-hover:-translate-x-1">←</span> Previous Page
             </button>
-            
-            <h2 class="text-3xl font-extrabold italic text-indigo-950 tracking-tight">Incremental Request</h2>
-
-            <div class="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-r-xl">
-                <h3 class="font-bold text-amber-800 mb-1 underline italic uppercase text-xs tracking-widest">New Funding Required</h3>
-                <p class="text-sm text-amber-700 leading-relaxed font-medium">
-                    Regardless of requester level, this requires <strong>New Funding Approval</strong> as it is an incremental data request.
-                </p>
+            <h2 class="text-3xl font-extrabold italic text-indigo-950 tracking-tight">Incremental Request Details</h2>
+            <div class="bg-amber-50 border-l-4 border-amber-500 p-8 rounded-r-2xl text-sm text-amber-800 leading-relaxed shadow-sm">
+                <h3 class="font-bold text-amber-900 mb-2 underline italic tracking-tight">Incremental Request & Funding Policy</h3>
+                <p>An <strong>Incremental Request</strong> includes any new report, columns, data views, or supplemental logic not currently in production. <strong>New Funding Approval is mandatory</strong> regardless of requester level.</p>
             </div>
-
             <div class="space-y-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
                 <div>
-                    <label class="block font-bold mb-2 italic">Funding Type</label>
-                    <select class="w-full p-3 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500">
-                        <option>Select Option...</option>
-                        <option>WBSE Code</option>
-                        <option>Cost Center</option>
-                    </select>
+                    <label class="block font-bold mb-2 italic text-slate-700">Billing Code / Account Number [WBSE] <span class="text-red-500 font-bold">*</span></label>
+                    <input type="text" required placeholder="Enter WBSE or Cost Center..." class="w-full p-3 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500 font-mono">
                 </div>
-
                 <div>
-                    <label class="block font-bold mb-2 italic">Billing Code / Account Number</label>
-                    <input type="text" placeholder="Enter code here..." class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-indigo-500 outline-none">
+                    <label class="block font-bold mb-2 italic text-slate-700">Detailed Description of Request</label>
+                    <textarea rows="4" placeholder="Describe the new report, column, or data view required..." class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
                 </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block font-bold mb-2 italic text-slate-700">Requester Email</label>
+                        <input type="email" placeholder="nina.z.sanchez@disney.com" class="w-full p-3 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-2 italic text-slate-700">Date Needed By</label>
+                        <input type="date" class="w-full p-3 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500 text-slate-500">
+                    </div>
+                </div>
+                <button onclick="showFinal('Engineering & Leadership')" class="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-indigo-700 transition uppercase tracking-widest">Submit Discovery Request</button>
+            </div>
+        </section>
 
-                <button onclick="showFinal('Brian / Adam', 'path-new')" class="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl shadow-lg hover:opacity-90 transition uppercase tracking-widest">Submit Discovery Request</button>
+        <section id="path-platform" class="page-section hidden fade-in space-y-8">
+            <button onclick="goBack('intro')" class="flex items-center text-sm font-black text-indigo-700 hover:text-indigo-900 uppercase tracking-wider group">
+                <span class="mr-2 transition-transform group-hover:-translate-x-1">←</span> Previous Page
+            </button>
+            <h2 class="text-3xl font-extrabold italic text-amber-950 tracking-tight">Platform & Cloud Support</h2>
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-8 rounded-r-2xl text-sm text-amber-800 leading-relaxed shadow-sm italic">
+                This path is for system access, cloud performance, or infrastructure issues. No funding required for environment maintenance.
+            </div>
+            <div class="space-y-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                <div>
+                    <label class="block font-bold mb-2 italic text-slate-700">ServiceNow Incident Number [INC#]</label>
+                    <input type="text" placeholder="INC#######" class="w-full p-3 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-amber-500 font-mono">
+                </div>
+                <div>
+                    <label class="block font-bold mb-2 italic text-slate-700">Detailed Description of Request</label>
+                    <textarea rows="4" placeholder="Describe the access or system issue..." class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-amber-500 outline-none"></textarea>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block font-bold mb-2 italic text-slate-700">Requester Email</label>
+                        <input type="email" placeholder="nina.z.sanchez@disney.com" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-amber-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-2 italic text-slate-700">Date Needed By</label>
+                        <input type="date" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-amber-500 text-slate-500">
+                    </div>
+                </div>
+                <button onclick="showFinal('Platform Engineering')" class="w-full bg-amber-600 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-amber-700 transition uppercase tracking-widest">Submit Platform Request</button>
             </div>
         </section>
 
         <section id="final" class="page-section hidden fade-in text-center py-12">
-            <button id="final-back-btn" onclick="" class="flex items-center text-sm font-black text-slate-400 hover:text-slate-900 uppercase tracking-wider group mx-auto mb-10 transition">
-                <span class="mr-2 transition-transform group-hover:-translate-x-1">←</span> Back to Form
-            </button>
-
-            <div class="mb-8">
-                <div class="h-20 w-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div class="mb-10">
+                <div class="h-20 w-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                     </svg>
                 </div>
-                <h2 class="text-3xl font-black italic tracking-tighter">Request Routed!</h2>
-                <p class="text-slate-600 mt-2 italic">The <span id="target-team" class="font-bold text-slate-950 underline decoration-indigo-500"></span> team has been notified.</p>
+                <h2 class="text-4xl font-black italic tracking-tighter text-slate-950">Request Successfully Routed!</h2>
+                <p class="text-slate-600 mt-4 text-lg italic max-w-2xl mx-auto">
+                    Your support submission has been logged within the Data Product Platforms environment. Our leadership and engineering teams have been notified.
+                </p>
             </div>
-            
-            <button onclick="location.reload()" class="block mx-auto mt-12 text-xs font-bold text-slate-400 hover:text-slate-900 uppercase tracking-widest border-b-2 border-transparent hover:border-slate-900 transition">Start New Request</button>
+
+            <div class="max-w-5xl mx-auto mb-16">
+                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-8 italic border-b pb-2 inline-block">Core Platform Leadership & Engineering</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                    <div class="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                        <span class="block text-[10px] uppercase font-bold text-indigo-600 mb-1 tracking-widest">Executive Owner</span>
+                        <span class="block text-xl font-black italic text-slate-900 leading-tight">Brian Reif</span>
+                        <span class="block text-xs text-slate-400 mt-1 font-semibold italic">Director, Data Engineering</span>
+                    </div>
+                    <div class="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                        <span class="block text-[10px] uppercase font-bold text-indigo-600 mb-1 tracking-widest">Engineering Lead</span>
+                        <span class="block text-xl font-black italic text-slate-900 leading-tight">Lancy L Quadros</span>
+                        <span class="block text-xs text-slate-400 mt-1 font-semibold italic">Lead Product Mgr</span>
+                    </div>
+                    <div class="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                        <span class="block text-[10px] uppercase font-bold text-indigo-600 mb-1 tracking-widest">Sr. Engineering Expert</span>
+                        <span class="block text-xl font-black italic text-slate-900 leading-tight">Adam M Portman</span>
+                        <span class="block text-xs text-slate-400 mt-1 font-semibold italic">Sr. Data Engineer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <button onclick="location.reload()" class="bg-slate-900 text-white font-bold py-4 px-12 rounded-2xl shadow-2xl hover:bg-indigo-600 transition-all uppercase tracking-widest text-sm">
+                    Start New Request
+                </button>
+                <div class="block">
+                    <button onclick="goBack('intro')" class="text-xs font-black text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors border-b border-transparent hover:border-slate-900 pb-1">
+                        ← Return to Portal Home
+                    </button>
+                </div>
+            </div>
         </section>
 
     </main>
@@ -147,13 +215,15 @@
             window.scrollTo(0, 0);
         }
 
-        function showFinal(team, sourceId) {
+        function toggleTesterEmail(show, path) {
+            const container = document.getElementById('tester-email-' + path);
+            if (show) container.classList.remove('hidden');
+            else container.classList.add('hidden');
+        }
+
+        function showFinal(team) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
             document.getElementById('final').classList.remove('hidden');
-            document.getElementById('target-team').innerText = team;
-            
-            // Set the back button on the final page to return to the specific form used
-            document.getElementById('final-back-btn').setAttribute('onclick', `goBack('${sourceId}')`);
             window.scrollTo(0, 0);
         }
     </script>
