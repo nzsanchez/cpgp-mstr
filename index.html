@@ -1,3 +1,80 @@
+<script>
+    // 1. PASTE YOUR WEBHOOK URL FROM AIRTABLE HERE
+    const AIRTABLE_WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/genericWebhook/appg6FxdMBA9WWkUy/wfl6hnajJqptpDjix/wtr4ZjQOG7kYYs9zn";
+
+    function goPath(targetId) {
+        document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
+        document.getElementById(targetId).classList.remove('hidden');
+        window.scrollTo(0, 0);
+    }
+
+    function goBack(previousId) {
+        document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
+        document.getElementById(previousId).classList.remove('hidden');
+        window.scrollTo(0, 0);
+    }
+
+    function toggleTesterEmail(show, path) {
+        const container = document.getElementById('tester-email-' + path);
+        if (show) container.classList.remove('hidden');
+        else container.classList.add('hidden');
+    }
+
+    // 2. THIS FUNCTION NOW GATHERS DATA AND SENDS IT TO AIRTABLE
+    async function showFinal() {
+        // Find the section currently visible to the user
+        const activeSection = document.querySelector('.page-section:not(.hidden)');
+        const sectionId = activeSection.id;
+
+        // Map the IDs to professional names for your "RequestType" column
+        const typeMapping = {
+            'path-broken': 'Broken Report',
+            'path-new': 'Incremental Request',
+            'path-platform': 'Platform Support'
+        };
+
+        // Gather all inputs from the visible page
+        const payload = {
+            RequestType: typeMapping[sectionId],
+            Description: activeSection.querySelector('textarea')?.value || "",
+            RequesterEmail: activeSection.querySelector('input[type="email"]')?.value || "",
+            DateNeeded: activeSection.querySelector('input[type="date"]')?.value || "",
+            // This grabs the INC# or WBSE code
+            ReferenceNumber: activeSection.querySelector('input[type="text"]')?.value || "",
+            // This grabs the tester email if it's the broken path
+            TesterEmail: document.querySelector('#tester-email-broken input')?.value || ""
+        };
+
+        // Send the data packet to Airtable
+        try {
+            fetch(AIRTABLE_WEBHOOK_URL, {
+                method: "POST",
+                mode: "no-cors", // Helps prevent browser security blocks for simple webhooks
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+        } catch (error) {
+            console.error("Airtable Error:", error);
+        }
+
+        // Show the success page
+        document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
+        document.getElementById('final').classList.remove('hidden');
+        window.scrollTo(0, 0);
+    }
+</script>
+
+NINA SANCHEZ
+Sr Manager, Technology Delivery
+Data Products & Platforms
+Disney Experience Technology
+M 201-705-8746
+
+From: Sanchez, Nina Z. <Nina.Z.Sanchez@disney.com>
+Sent: Thursday, April 9, 2026 6:50:29 PM
+To: Sanchez, Nina Z. <Nina.Z.Sanchez@disney.com>
+Subject: Re:
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
