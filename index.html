@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MicroStrategy Support Path</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+       .hidden { display: none; }
+       .fade-in { animation: fadeIn 0.5s ease-in; }
+       @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-6">
+<div class="max-w-2xl w-full bg-white rounded-xl shadow-lg p-8">
+<header class="text-center mb-8">
+<h1 class="text-2xl font-bold text-gray-800">MSTR Support Finder</h1>
+<p class="text-gray-600">Follow the path below to find the right contact for your request.</p>
+</header>
+<div id="step-1" class="space-y-4 fade-in">
+<h2 class="text-lg font-semibold text-gray-700">What do you need help with?</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<button onclick="showFinal('Lancy', 'Platform Support')" class="p-4 border-2 border-blue-100 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition text-left font-medium">Platform</button>
+<button onclick="showFinal('Lancy', 'Infrastructure Support')" class="p-4 border-2 border-blue-100 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition text-left font-medium">Infrastructure</button>
+<button onclick="goToStep2()" class="p-4 border-2 border-blue-100 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition text-left font-medium">Report Management</button>
+<button onclick="showFinal('Brian', 'Licenses and Payments')" class="p-4 border-2 border-blue-100 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition text-left font-medium">Licenses & Payments</button>
+</div>
+</div>
+<div id="step-2" class="hidden space-y-4 fade-in">
+<button onclick="reset()" class="text-sm text-blue-600 hover:underline">← Back</button>
+<h2 class="text-lg font-semibold text-gray-700">What is the report issue?</h2>
+<div class="grid grid-cols-1 gap-3">
+<button onclick="showFinal('Adam', 'Column Additions')" class="p-3 border rounded-lg hover:bg-gray-100 text-left">Column Additions</button>
+<button onclick="showFinal('Adam', 'Report Stopped Working')" class="p-3 border rounded-lg hover:bg-gray-100 text-left">Report Stopped Working</button>
+<button onclick="showFinal('Adam', 'New Report Request')" class="p-3 border rounded-lg hover:bg-gray-100 text-left">New Report Request</button>
+</div>
+</div>
+<div id="final-path" class="hidden mt-8 p-6 bg-blue-600 text-white rounded-lg fade-in">
+<h3 class="text-xl font-bold mb-2">Your Support Path:</h3>
+<p id="result-text" class="mb-4 text-blue-50"></p>
+<div class="bg-white text-blue-600 p-4 rounded font-bold text-center">
+               Contact: <span id="contact-person"></span>
+</div>
+<button onclick="reset()" class="mt-4 block mx-auto text-sm text-blue-200 hover:text-white underline">Start Over</button>
+</div>
+</div>
+<script>
+       function goToStep2() {
+           document.getElementById('step-1').classList.add('hidden');
+           document.getElementById('step-2').classList.remove('hidden');
+       }
+       function showFinal(person, type) {
+           document.getElementById('step-1').classList.add('hidden');
+           document.getElementById('step-2').classList.add('hidden');
+           document.getElementById('final-path').classList.remove('hidden');
+           document.getElementById('result-text').innerText = "You have selected: " + type;
+           document.getElementById('contact-person').innerText = person;
+       }
+       function reset() {
+           document.getElementById('step-1').classList.remove('hidden');
+           document.getElementById('step-2').classList.add('hidden');
+           document.getElementById('final-path').classList.add('hidden');
+       }
+</script>
+</body>
+</html>
