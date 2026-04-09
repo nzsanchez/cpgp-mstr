@@ -17,7 +17,7 @@
 
     <nav class="disney-dark py-4 px-8 flex justify-between items-center shadow-lg text-white">
         <div class="flex items-center space-x-2">
-            <div class="bg-white text-slate-900 font-bold p-1 rounded text-sm tracking-tighter">DPP</div>
+            <div class="bg-white text-slate-900 font-bold p-1 rounded text-sm tracking-tighter text-[11px]">DPP</div>
             <div class="flex flex-col">
                 <span class="font-bold tracking-tight leading-none text-sm">Support Portal</span>
                 <span class="text-[9px] uppercase tracking-widest text-indigo-300 mt-1 font-black italic">MicroStrategy Requests Only</span>
@@ -26,10 +26,10 @@
         <span class="text-xs font-medium text-slate-400 uppercase tracking-widest hidden md:block">Data Product Platforms</span>
     </nav>
 
-    <main class="max-w-5xl mx-auto py-12 px-6">
+    <main class="max-w-6xl mx-auto py-12 px-6">
         
         <section id="intro" class="page-section fade-in">
-            <h1 class="text-4xl font-extrabold text-slate-950 mb-6 tracking-tighter italic leading-tight">
+            <h1 class="text-4xl font-extrabold text-slate-950 mb-6 tracking-tighter italic leading-tight text-center md:text-left">
                 How can the Data Products and Platforms (DPP) team help you today?
             </h1>
             <p class="text-lg text-slate-600 mb-10 leading-relaxed max-w-3xl">
@@ -39,7 +39,7 @@
             <div class="grid grid-cols-1 gap-6">
                 <button onclick="goPath('path-broken')" class="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-red-500 hover:shadow-xl transition text-left group">
                     <span class="block text-2xl font-bold group-hover:text-red-600 mb-2 italic">"My report is broken or the data is incorrect."</span>
-                    <span class="text-slate-500 italic">For issues with existing production reports that were previously functional.</span>
+                    <span class="text-slate-500 italic">For existing production reports that were previously functional but are now experiencing issues.</span>
                 </button>
 
                 <button onclick="goPath('path-new')" class="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-indigo-500 hover:shadow-xl transition text-left group">
@@ -73,13 +73,13 @@
                     <a href="https://disney.service-now.com/dtoolsitsp?id=report_an_issue" target="_blank" class="inline-block bg-slate-900 text-white px-5 py-2.5 rounded font-bold text-sm hover:bg-slate-700 transition mt-2">Report an Issue</a>
                 </div>
                 <div>
-                    <label class="block font-bold mb-2 italic text-slate-700">2. Incident Number (INC#)</label>
+                    <label class="block font-bold mb-2 italic text-slate-700">2. Enter Incident Number (INC#)</label>
                     <input type="text" placeholder="INC#######" class="w-full p-3 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-blue-500 font-mono">
                 </div>
                 <div class="space-y-4 pt-4 border-t">
-                    <label class="block font-bold italic text-sm text-slate-700 text-slate-700">3. Triage Readiness</label>
+                    <label class="block font-bold italic text-sm text-slate-700">3. Is a tester on standby right now?</label>
                     <div class="flex space-x-6">
-                        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="tester" onclick="toggleTesterEmail(true, 'broken')" class="h-4 w-4"> <span>Yes, Tester is on Standby</span></label>
+                        <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="tester" onclick="toggleTesterEmail(true, 'broken')" class="h-4 w-4"> <span>Yes</span></label>
                         <label class="flex items-center space-x-2 cursor-pointer"><input type="radio" name="tester" onclick="toggleTesterEmail(false, 'broken')" class="h-4 w-4"> <span>No</span></label>
                     </div>
                     <div id="tester-email-broken" class="hidden fade-in pt-2">
@@ -87,7 +87,7 @@
                         <input type="email" placeholder="tester.email@disney.com" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-blue-500">
                     </div>
                 </div>
-                <button onclick="showFinal('Engineering')" class="w-full disney-blue text-white font-bold py-4 rounded-xl shadow-lg hover:opacity-90 transition uppercase tracking-widest">Route for Technical Review</button>
+                <button onclick="showFinal()" class="w-full disney-blue text-white font-bold py-4 rounded-xl shadow-lg hover:opacity-90 transition uppercase tracking-widest">Route for Technical Review</button>
             </div>
         </section>
 
@@ -97,8 +97,8 @@
             </button>
             <h2 class="text-3xl font-extrabold italic text-indigo-950 tracking-tight">Incremental Request Details</h2>
             <div class="bg-amber-50 border-l-4 border-amber-500 p-8 rounded-r-2xl text-sm text-amber-800 leading-relaxed shadow-sm">
-                <h3 class="font-bold text-amber-900 mb-2 underline italic tracking-tight">Incremental Request & Funding Policy</h3>
-                <p>An <strong>Incremental Request</strong> includes any new report, columns, data views, or supplemental logic not currently in production. <strong>New Funding Approval is mandatory</strong> regardless of requester level.</p>
+                <h3 class="font-bold text-amber-900 mb-2 underline italic tracking-tight uppercase text-xs">Incremental Request Policy</h3>
+                <p>An <strong>Incremental Request</strong> includes any new report, columns, or data views that do not exist today. <strong>New Funding Approval is mandatory</strong> regardless of requester level.</p>
             </div>
             <div class="space-y-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
                 <div>
@@ -107,7 +107,7 @@
                 </div>
                 <div>
                     <label class="block font-bold mb-2 italic text-slate-700">Detailed Description of Request</label>
-                    <textarea rows="4" placeholder="Describe the new report, column, or data view required..." class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
+                    <textarea rows="4" placeholder="Describe the required columns or report logic..." class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -116,10 +116,10 @@
                     </div>
                     <div>
                         <label class="block font-bold mb-2 italic text-slate-700">Date Needed By</label>
-                        <input type="date" class="w-full p-3 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500 text-slate-500">
+                        <input type="date" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-indigo-500 text-slate-500">
                     </div>
                 </div>
-                <button onclick="showFinal('Engineering & Leadership')" class="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-indigo-700 transition uppercase tracking-widest">Submit Discovery Request</button>
+                <button onclick="showFinal()" class="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-indigo-700 transition uppercase tracking-widest">Submit Discovery Request</button>
             </div>
         </section>
 
@@ -128,14 +128,10 @@
                 <span class="mr-2 transition-transform group-hover:-translate-x-1">←</span> Previous Page
             </button>
             <h2 class="text-3xl font-extrabold italic text-amber-950 tracking-tight">Platform & Cloud Support</h2>
-            <div class="bg-amber-50 border-l-4 border-amber-400 p-8 rounded-r-2xl text-sm text-amber-800 leading-relaxed shadow-sm italic">
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-8 rounded-r-2xl text-sm text-amber-800 leading-relaxed shadow-sm italic font-medium">
                 This path is for system access, cloud performance, or infrastructure issues. No funding required for environment maintenance.
             </div>
             <div class="space-y-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                <div>
-                    <label class="block font-bold mb-2 italic text-slate-700">ServiceNow Incident Number [INC#]</label>
-                    <input type="text" placeholder="INC#######" class="w-full p-3 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-amber-500 font-mono">
-                </div>
                 <div>
                     <label class="block font-bold mb-2 italic text-slate-700">Detailed Description of Request</label>
                     <textarea rows="4" placeholder="Describe the access or system issue..." class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-amber-500 outline-none"></textarea>
@@ -143,53 +139,74 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block font-bold mb-2 italic text-slate-700">Requester Email</label>
-                        <input type="email" placeholder="nina.z.sanchez@disney.com" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-amber-500">
+                        <input type="email" placeholder="nina.z.sanchez@disney.com" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-amber-500 outline-none">
                     </div>
                     <div>
                         <label class="block font-bold mb-2 italic text-slate-700">Date Needed By</label>
-                        <input type="date" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-amber-500 text-slate-500">
+                        <input type="date" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-amber-500 text-slate-500 outline-none">
                     </div>
                 </div>
-                <button onclick="showFinal('Platform Engineering')" class="w-full bg-amber-600 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-amber-700 transition uppercase tracking-widest">Submit Platform Request</button>
+                <button onclick="showFinal()" class="w-full bg-amber-600 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-amber-700 transition uppercase tracking-widest">Submit Platform Request</button>
             </div>
         </section>
 
-        <section id="final" class="page-section hidden fade-in text-center py-12">
-            <div class="mb-10">
+        <section id="final" class="page-section hidden fade-in py-12">
+            <div class="text-center mb-12">
                 <div class="h-20 w-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                     </svg>
                 </div>
                 <h2 class="text-4xl font-black italic tracking-tighter text-slate-950">Request Successfully Routed!</h2>
-                <p class="text-slate-600 mt-4 text-lg italic max-w-2xl mx-auto">
-                    Your support submission has been logged within the Data Product Platforms environment. Our leadership and engineering teams have been notified.
+                <p class="text-slate-600 mt-4 text-lg italic max-w-3xl mx-auto leading-relaxed">
+                    Your submission has been logged within the Data Product Platforms environment. Our leadership and engineering teams have been notified for triage and resource allocation.
                 </p>
             </div>
 
-            <div class="max-w-5xl mx-auto mb-16">
+            <div class="mb-16">
                 <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-8 italic border-b pb-2 inline-block">Core Platform Leadership & Engineering</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-                    <div class="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
-                        <span class="block text-[10px] uppercase font-bold text-indigo-600 mb-1 tracking-widest">Executive Owner</span>
-                        <span class="block text-xl font-black italic text-slate-900 leading-tight">Brian Reif</span>
-                        <span class="block text-xs text-slate-400 mt-1 font-semibold italic">Director, Data Engineering</span>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    
+                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                        <div>
+                            <span class="block text-slate-400 uppercase text-[10px] font-bold tracking-widest mb-1">Executive Owner</span>
+                            <span class="block text-xl font-black italic text-slate-900 tracking-tight">Brian Reif</span>
+                            <span class="block text-xs text-indigo-700 font-bold mb-4">Director, Data Engineering</span>
+                            <p class="text-[11px] text-slate-600 leading-relaxed mb-6">
+                                Brian is the primary Executive Owner of the DPP data product platforms and platform services. He provides strategic leadership and overarching vision for the platform's engineering direction and service capabilities.
+                            </p>
+                        </div>
+                        <a href="mailto:brian.e.reif@disney.com" class="block text-[10px] font-bold text-blue-700 bg-blue-50 py-2 px-3 rounded-lg text-center hover:bg-blue-100 transition">brian.e.reif@disney.com</a>
                     </div>
-                    <div class="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
-                        <span class="block text-[10px] uppercase font-bold text-indigo-600 mb-1 tracking-widest">Engineering Lead</span>
-                        <span class="block text-xl font-black italic text-slate-900 leading-tight">Lancy L Quadros</span>
-                        <span class="block text-xs text-slate-400 mt-1 font-semibold italic">Lead Product Mgr</span>
+
+                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                        <div>
+                            <span class="block text-slate-400 uppercase text-[10px] font-bold tracking-widest mb-1">Engineering Lead</span>
+                            <span class="block text-xl font-black italic text-slate-900 tracking-tight">Lancy L Quadros</span>
+                            <span class="block text-xs text-indigo-700 font-bold mb-4">Lead Product Mgr</span>
+                            <p class="text-[11px] text-slate-600 leading-relaxed mb-6">
+                                Lancy is the main lead for Infrastructure Engineering and Platform Engineering. He manages the foundational infrastructure, system architecture, and overall platform performance.
+                            </p>
+                        </div>
+                        <a href="mailto:lancy.quadros@disney.com" class="block text-[10px] font-bold text-blue-700 bg-blue-50 py-2 px-3 rounded-lg text-center hover:bg-blue-100 transition">lancy.quadros@disney.com</a>
                     </div>
-                    <div class="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
-                        <span class="block text-[10px] uppercase font-bold text-indigo-600 mb-1 tracking-widest">Sr. Engineering Expert</span>
-                        <span class="block text-xl font-black italic text-slate-900 leading-tight">Adam M Portman</span>
-                        <span class="block text-xs text-slate-400 mt-1 font-semibold italic">Sr. Data Engineer</span>
+
+                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                        <div>
+                            <span class="block text-slate-400 uppercase text-[10px] font-bold tracking-widest mb-1">Sr. Engineering Expert</span>
+                            <span class="block text-xl font-black italic text-slate-900 tracking-tight">Adam M Portman</span>
+                            <span class="block text-xs text-indigo-700 font-bold mb-4">Sr. Data Engineer</span>
+                            <p class="text-[11px] text-slate-600 leading-relaxed mb-6">
+                                Adam is our Senior Data Engineer with a strong specialization in report building and data solutions architecture. He supports detailed data product development and advanced report request fulfillment.
+                            </p>
+                        </div>
+                        <a href="mailto:adam.portman@disney.com" class="block text-[10px] font-bold text-blue-700 bg-blue-50 py-2 px-3 rounded-lg text-center hover:bg-blue-100 transition">adam.portman@disney.com</a>
                     </div>
                 </div>
             </div>
 
-            <div class="space-y-6">
-                <button onclick="location.reload()" class="bg-slate-900 text-white font-bold py-4 px-12 rounded-2xl shadow-2xl hover:bg-indigo-600 transition-all uppercase tracking-widest text-sm">
+            <div class="text-center space-y-6">
+                <button onclick="location.reload()" class="bg-slate-900 text-white font-bold py-4 px-12 rounded-2xl shadow-2xl hover:bg-indigo-600 transition-all uppercase tracking-widest text-sm transform hover:-translate-y-1 active:scale-95">
                     Start New Request
                 </button>
                 <div class="block">
@@ -221,11 +238,11 @@
             else container.classList.add('hidden');
         }
 
-        function showFinal(team) {
+        function showFinal() {
             document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
             document.getElementById('final').classList.remove('hidden');
             window.scrollTo(0, 0);
         }
     </script>
 </body>
-</html>
+</html> 
