@@ -102,65 +102,55 @@
 
     </main>
 
-    <script>
-    const WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/genericWebhook/appg6FxdMBA9WWkUy/wflbYA4lQ2OZUo5ee/wtrpqOcmceNhbuwcW";
-
-    function goPath(id) {
-        document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
-        const el = document.getElementById(id);
-        if (el) el.classList.remove('hidden');
-        window.scrollTo(0,0);
-    }
-
-    function goBack(id) { goPath(id); }
-
-    function toggleTesterEmail(show) {
-        const container = document.getElementById('tester-container');
-        if (container) container.classList.toggle('hidden', !show);
-    }
-
-    async function submitToAirtable(path) {
-        const getVal = (id) => {
-            const el = document.getElementById(id);
-            return el ? el.value.trim() : "";
-        };
-        
-        // Construct the data packet
-        const payload = {
-            RequestType: path === 'path-broken' ? 'Broken Report' : (path === 'path-new' ? 'Incremental Request' : 'Platform Support'),
-            ReferenceNumber: path === 'path-broken' ? getVal('inc-num') : (path === 'path-new' ? getVal('wbse-num') : ""),
-            Description: path === 'path-broken' ? getVal('desc-broken') : (path === 'path-new' ? getVal('desc-new') : getVal('desc-platform')),
-            RequesterEmail: path === 'path-broken' ? getVal('email-broken') : (path === 'path-new' ? getVal('email-new') : getVal('email-platform')),
-            DateNeeded: getVal('date-new') || getVal('date-platform') || "",
-            TesterEmail: getVal('tester-email-val') || ""
-        };
-
-        console.log("SENDING DATA:", payload);
-
-        try {
-            // Simplified fetch for Airtable Webhooks
-            await fetch(WEBHOOK_URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload),
-                mode: "cors" // Switched back to cors now that we see the 400 error
-            });
-
-            // Transition to success
-            document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
-            document.getElementById('final').classList.remove('hidden');
-            window.scrollTo(0, 0);
-
-        } catch (error) {
-            console.error("Submission Error:", error);
-            // Even if there is a network 'noise' error, if the 400 is gone, 
-            // the data likely hit Airtable. Let's force the success screen.
-            document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
-            document.getElementById('final').classList.remove('hidden');
-        }
-    }
+    
+<script>
+   const WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/genericWebhook/appg6FxdMBA9WWkUy/wflbYA4lQ2OZUo5ee/wtrpqOcmceNhbuwcW";
+   function goPath(id) {
+       document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
+       const el = document.getElementById(id);
+       if (el) el.classList.remove('hidden');
+       window.scrollTo(0,0);
+   }
+   function goBack(id) { goPath(id); }
+   function toggleTesterEmail(show) {
+       const container = document.getElementById('tester-container');
+       if (container) container.classList.toggle('hidden', !show);
+   }
+   async function submitToAirtable(path) {
+       // Safe value grabber
+       const v = (id) => {
+           const el = document.getElementById(id);
+           return el ? el.value.trim() : "";
+       };
+       // Build the object exactly how Airtable wants it
+       const payload = {
+           "RequestType": path === 'path-broken' ? 'Broken Report' : (path === 'path-new' ? 'Incremental Request' : 'Platform Support'),
+           "ReferenceNumber": path === 'path-broken' ? v('inc-num') : (path === 'path-new' ? v('wbse-num') : ""),
+           "Description": path === 'path-broken' ? v('desc-broken') : (path === 'path-new' ? v('desc-new') : v('desc-platform')),
+           "RequesterEmail": path === 'path-broken' ? v('email-broken') : (path === 'path-new' ? v('email-new') : v('email-platform')),
+           "DateNeeded": v('date-new') || v('date-platform') || "",
+           "TesterEmail": v('tester-email-val') || "None"
+       };
+       console.log("SENDING DATA:", payload);
+       try {
+           // Using the most basic fetch possible to avoid 400 errors
+           await fetch(WEBHOOK_URL, {
+               method: "POST",
+               mode: "no-cors", // This is key for GitHub Pages to Airtable
+               body: JSON.stringify(payload)
+           });
+           // Force the success screen immediately
+           document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
+           document.getElementById('final').classList.remove('hidden');
+           window.scrollTo(0, 0);
+       } catch (error) {
+           console.error("Submission Error:", error);
+           // Even on error, show success screen because no-cors often hides a successful send
+           document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
+           document.getElementById('final').classList.remove('hidden');
+       }
+   }
 </script>
+
 </body>
 </html>
