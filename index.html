@@ -175,12 +175,31 @@
 
             console.log("SENDING:", payload);
 
+            const btn = document.getElementById('submit-btn');
             try {
-                await fetch(WEBHOOK_URL, { method: "POST", mode: "no-cors", body: JSON.stringify(payload) });
+                btn.disabled = true;
+                const res = await fetch(WEBHOOK_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                });
+                const text = await res.text();
+                if (!res.ok) {
+                    console.error("Airtable webhook:", res.status, text);
+                    alert("Could not submit (" + res.status + "). Check the browser console and Airtable automation run history.");
+                    return;
+                }
                 document.getElementById('form-container').classList.add('hidden');
                 document.getElementById('final').classList.remove('hidden');
                 window.scrollTo(0,0);
-            } catch (e) { console.error(e); }
+            } catch (e) {
+                console.error(e);
+                alert(
+                    "Request failed. If the console shows a CORS error, Airtable webhooks cannot be called directly from the browser—use a small server or serverless function to POST the JSON instead."
+                );
+            } finally {
+                btn.disabled = false;
+            }
         }
     </script>
 </body>
