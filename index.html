@@ -17,245 +17,130 @@
 
     <nav class="disney-dark py-4 px-8 flex justify-between items-center shadow-lg text-white">
         <div class="flex items-center space-x-2">
-            <div class="bg-white text-slate-900 font-bold p-1 rounded text-[11px] tracking-tighter italic">DPP</div>
+            <div class="bg-white text-slate-900 font-bold p-1 rounded text-[11px] italic">DPP</div>
             <div class="flex flex-col">
-                <span class="font-bold tracking-tight leading-none text-sm tracking-wide">Support Portal</span>
-                <span class="text-[9px] uppercase tracking-widest text-indigo-300 mt-1 font-black italic">MicroStrategy Requests Only</span>
+                <span class="font-bold text-sm tracking-wide">Support Portal</span>
+                <span class="text-[9px] uppercase text-indigo-300 font-black italic tracking-widest">MicroStrategy Requests Only</span>
             </div>
         </div>
-        <span class="text-xs font-medium text-slate-400 uppercase tracking-widest hidden md:block italic">Data Product Platforms</span>
     </nav>
 
     <main class="max-w-6xl mx-auto py-12 px-6">
         
         <section id="intro" class="page-section fade-in">
-            <h1 class="text-4xl font-extrabold text-slate-950 mb-6 tracking-tighter italic leading-tight">
-                How can the Data Products and Platforms team help you with your MicroStrategy request today?
-            </h1>
-            <p class="text-lg text-slate-600 mb-10 leading-relaxed max-w-4xl">
-                Please select the option below that most accurately aligns with your current business requirements. This specialized intake process is designed to ensure that every request is <strong>formally routed to the correct engineering resource and funded properly</strong> in accordance with Data Products and Platforms governance.
+            <h1 class="text-4xl font-extrabold text-slate-950 mb-6 italic leading-tight">How can we help with MicroStrategy?</h1>
+            <p class="text-lg text-slate-600 mb-10 leading-relaxed max-w-4xl italic">
+                Please select the option below that aligns with your business requirements to ensure your request is formally routed and funded properly.
             </p>
-            
             <div class="grid grid-cols-1 gap-6">
-                <button onclick="goPath('path-broken')" class="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-red-500 hover:shadow-xl transition text-left group">
-                    <span class="block text-2xl font-bold group-hover:text-red-600 mb-2 italic">"My report is broken or the data is incorrect."</span>
-                    <span class="text-slate-500 italic">For issues with existing production reports that were functional but are now experiencing technical or data issues.</span>
+                <button onclick="goPath('path-broken')" class="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-red-500 transition text-left group shadow-sm">
+                    <span class="block text-2xl font-bold group-hover:text-red-600 mb-2 italic">"My report is broken or data is incorrect."</span>
                 </button>
-
-                <button onclick="goPath('path-new')" class="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-indigo-500 hover:shadow-xl transition text-left group">
-                    <span class="block text-2xl font-bold group-hover:text-indigo-600 mb-2 italic">"I need to add new data or build a new report."</span>
-                    <span class="text-slate-500 italic">For incremental requests: new reports, columns, or data views that do not exist today.</span>
+                <button onclick="goPath('path-new')" class="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-indigo-500 transition text-left group shadow-sm">
+                    <span class="block text-2xl font-bold group-hover:text-indigo-600 mb-2 italic">"I need new data or a new report."</span>
                 </button>
-
-                <button onclick="goPath('path-platform')" class="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-amber-500 hover:shadow-xl transition text-left group">
-                    <span class="block text-2xl font-bold group-hover:text-amber-600 mb-2 italic">"I need Platform or MicroStrategy Cloud support."</span>
-                    <span class="text-slate-500 italic">For system access, cloud environment performance, or infrastructure queries.</span>
+                <button onclick="goPath('path-platform')" class="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-amber-500 transition text-left group shadow-sm">
+                    <span class="block text-2xl font-bold group-hover:text-amber-600 mb-2 italic">"I need Platform or Cloud support."</span>
                 </button>
             </div>
         </section>
 
-        <section id="path-broken" class="page-section hidden fade-in space-y-8">
-            <button onclick="goBack('intro')" class="flex items-center text-sm font-black text-indigo-700 hover:text-indigo-900 uppercase tracking-wider group">
-                <span class="mr-2 transition-transform group-hover:-translate-x-1">←</span> Previous Page
-            </button>
-            <h2 class="text-3xl font-extrabold italic tracking-tight text-slate-900">Report Issue Details</h2>
-            
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-8 rounded-r-2xl shadow-sm space-y-4">
-                <h3 class="font-bold text-blue-900 underline italic tracking-tight uppercase text-xs">Support Funding & Service Level Guidance</h3>
-                <p class="text-sm text-blue-800 leading-relaxed italic font-medium">
-                    Troubleshooting efforts for these assets are fully covered under Ongoing Maintenance (OGM) and Sustainment Funding.
-                </p>
+        <section id="path-broken" class="page-section hidden fade-in space-y-6">
+            <button onclick="goBack('intro')" class="text-xs font-black text-indigo-700 uppercase tracking-widest italic">← Previous Page</button>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl italic text-sm text-blue-800 font-medium">
+                Troubleshooting for these assets is covered under Ongoing Maintenance (OGM). "Critical" status requires an active business tester.
             </div>
-
-            <div class="space-y-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                <div>
-                    <label class="block font-bold mb-1 italic text-slate-700">1. Log Ticket in ServiceNow</label>
-                    <a href="https://disney.service-now.com/dtoolsitsp?id=report_an_issue" target="_blank" class="inline-block bg-slate-900 text-white px-5 py-2.5 rounded font-bold text-sm hover:bg-slate-700 transition mt-2 tracking-widest uppercase italic">Report an Issue</a>
-                </div>
-                <div>
-                    <label class="block font-bold mb-2 italic text-slate-700">2. Enter Incident Number (INC#)</label>
-                    <input type="text" id="inc-num" placeholder="INC#######" class="w-full p-3 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-blue-500 font-mono">
-                </div>
-                <div>
-                    <label class="block font-bold mb-2 italic text-slate-700">3. Problem Description</label>
-                    <textarea id="desc-broken" rows="4" placeholder="Describe the discrepancy..." class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-blue-500"></textarea>
-                </div>
-                <div>
-                    <label class="block font-bold mb-2 italic text-slate-700">4. Requester Email</label>
-                    <input type="email" id="email-broken" placeholder="your.email@disney.com" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-blue-500">
-                </div>
-                <div class="space-y-4 pt-4 border-t">
-                    <label class="block font-bold italic text-sm text-slate-700">5. Is a tester on standby right now?</label>
-                    <div class="flex space-x-6">
-                        <label class="flex items-center space-x-2 cursor-pointer font-bold"><input type="radio" name="tester" onclick="toggleTesterEmail(true)" class="h-4 w-4"> <span>Yes</span></label>
-                        <label class="flex items-center space-x-2 cursor-pointer font-bold"><input type="radio" name="tester" onclick="toggleTesterEmail(false)" class="h-4 w-4"> <span>No</span></label>
-                    </div>
-                    <div id="tester-container" class="hidden fade-in pt-2">
-                        <label class="block font-bold mb-2 italic text-xs text-slate-500 uppercase tracking-widest italic font-sans">Tester Contact Email</label>
-                        <input type="email" id="tester-email-val" placeholder="tester.email@disney.com" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-blue-500">
-                    </div>
-                </div>
-                <button onclick="submitToAirtable('path-broken')" class="w-full disney-blue text-white font-bold py-4 rounded-xl shadow-lg hover:opacity-90 transition uppercase tracking-widest active:scale-95 italic">Route for Technical Review</button>
+            <div class="bg-white p-8 rounded-2xl border shadow-sm space-y-4">
+                <input type="text" id="inc-num" placeholder="ServiceNow INC#" class="w-full p-4 border rounded-xl bg-slate-50">
+                <textarea id="desc-broken" rows="4" placeholder="Describe the report discrepancy..." class="w-full p-4 border rounded-xl bg-slate-50"></textarea>
+                <input type="email" id="email-broken" placeholder="Your Disney Email" class="w-full p-4 border rounded-xl bg-slate-50">
+                <button onclick="submitToAirtable('path-broken')" class="w-full disney-blue text-white font-bold py-4 rounded-xl uppercase italic shadow-lg">Route for Technical Review</button>
             </div>
         </section>
 
-        <section id="path-new" class="page-section hidden fade-in space-y-8">
-            <button onclick="goBack('intro')" class="flex items-center text-sm font-black text-indigo-700 hover:text-indigo-900 uppercase tracking-wider group">
-                <span class="mr-2 transition-transform group-hover:-translate-x-1">←</span> Previous Page
-            </button>
-            <h2 class="text-3xl font-extrabold italic text-indigo-950 tracking-tight">Incremental Request Details</h2>
-            
-            <div class="bg-indigo-50 border-l-4 border-indigo-600 p-8 rounded-r-2xl shadow-sm space-y-4">
-                <h3 class="font-bold text-indigo-900 underline italic tracking-tight uppercase text-xs">Incremental Request & Funding Policy</h3>
-                <p class="text-sm text-indigo-800 leading-relaxed italic font-medium">
-                    Every incremental project must undergo a formal discovery phase to determine the necessary resource allocation and budget requirements.
-                </p>
+        <section id="path-new" class="page-section hidden fade-in space-y-6">
+            <button onclick="goBack('intro')" class="text-xs font-black text-indigo-700 uppercase tracking-widest italic">← Previous Page</button>
+            <div class="bg-indigo-50 border-l-4 border-indigo-600 p-6 rounded-r-xl italic text-sm text-indigo-800 font-medium">
+                New reports require New Funding Approval. Every incremental project must undergo a formal discovery phase.
             </div>
-
-            <div class="space-y-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                <div>
-                    <label class="block font-bold mb-2 italic text-slate-700">Billing Code / Account Number [WBSE] <span class="text-red-500 font-black">*</span></label>
-                    <input type="text" id="wbse-num" placeholder="Enter WBSE or Cost Center..." class="w-full p-3 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500 font-mono">
-                </div>
-                <div>
-                    <label class="block font-bold mb-2 italic text-slate-700">Detailed Description of Request</label>
-                    <textarea id="desc-new" rows="4" placeholder="Describe the required columns or report logic..." class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block font-bold mb-2 italic text-slate-700">Requester Email</label>
-                        <input type="email" id="email-new" placeholder="your.email@disney.com" class="w-full p-3 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500">
-                    </div>
-                    <div>
-                        <label class="block font-bold mb-2 italic text-slate-700">Date Needed By</label>
-                        <input type="date" id="date-new" class="w-full p-3 border rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500 text-slate-500">
-                    </div>
-                </div>
-                <button onclick="submitToAirtable('path-new')" class="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-indigo-700 transition uppercase tracking-widest active:scale-95 italic">Submit Discovery Request</button>
+            <div class="bg-white p-8 rounded-2xl border shadow-sm space-y-4">
+                <input type="text" id="wbse-num" placeholder="Billing Code [WBSE]" class="w-full p-4 border rounded-xl bg-slate-50">
+                <textarea id="desc-new" rows="4" placeholder="Describe columns or logic needed..." class="w-full p-4 border rounded-xl bg-slate-50"></textarea>
+                <input type="email" id="email-new" placeholder="Your Email" class="w-full p-4 border rounded-xl bg-slate-50">
+                <input type="date" id="date-new" class="w-full p-4 border rounded-xl bg-slate-50">
+                <button onclick="submitToAirtable('path-new')" class="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl uppercase italic shadow-lg">Submit Discovery Request</button>
             </div>
         </section>
 
-        <section id="path-platform" class="page-section hidden fade-in space-y-8">
-            <button onclick="goBack('intro')" class="flex items-center text-sm font-black text-indigo-700 hover:text-indigo-900 uppercase tracking-wider group">
-                <span class="mr-2 transition-transform group-hover:-translate-x-1">←</span> Previous Page
-            </button>
-            <h2 class="text-3xl font-extrabold italic text-amber-950 tracking-tight">Platform & Cloud Support</h2>
-            
-            <div class="bg-amber-50 border-l-4 border-amber-400 p-8 rounded-r-2xl shadow-sm space-y-4">
-                <h3 class="font-bold text-amber-900 underline italic tracking-tight uppercase text-xs">Environment & Infrastructure Policy</h3>
-                <p class="text-sm text-amber-800 leading-relaxed italic font-medium">
-                    This specialized support channel is dedicated to environment-level infrastructure and system accessibility issues.
-                </p>
-            </div>
-
-            <div class="space-y-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                <div>
-                    <label class="block font-bold mb-2 italic text-slate-700">Detailed Description of Request</label>
-                    <textarea id="desc-platform" rows="4" placeholder="Describe the access or system issue..." class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-amber-500 outline-none"></textarea>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block font-bold mb-2 italic text-slate-700">Requester Email</label>
-                        <input type="email" id="email-platform" placeholder="your.email@disney.com" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-amber-500 outline-none">
-                    </div>
-                    <div>
-                        <label class="block font-bold mb-2 italic text-slate-700">Date Needed By</label>
-                        <input type="date" id="date-platform" class="w-full p-3 border rounded-lg bg-slate-50 focus:ring-2 focus:ring-amber-500 text-slate-500 outline-none">
-                    </div>
-                </div>
-                <button onclick="submitToAirtable('path-platform')" class="w-full bg-amber-600 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-amber-700 transition uppercase tracking-widest active:scale-95 italic">Submit Platform Request</button>
+        <section id="path-platform" class="page-section hidden fade-in space-y-6">
+            <button onclick="goBack('intro')" class="text-xs font-black text-indigo-700 uppercase tracking-widest italic">← Previous Page</button>
+            <div class="bg-white p-8 rounded-2xl border shadow-sm space-y-4">
+                <textarea id="desc-platform" rows="4" placeholder="Describe access or system issues..." class="w-full p-4 border rounded-xl bg-slate-50"></textarea>
+                <input type="email" id="email-platform" placeholder="Your Email" class="w-full p-4 border rounded-xl bg-slate-50">
+                <button onclick="submitToAirtable('path-platform')" class="w-full bg-amber-600 text-white font-bold py-4 rounded-xl uppercase italic shadow-lg">Submit Platform Request</button>
             </div>
         </section>
 
-        <section id="final" class="page-section hidden fade-in py-12">
-            <div class="text-center mb-12">
-                <div class="h-20 w-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                    </svg>
+        <section id="final" class="page-section hidden fade-in text-center py-12">
+            <h2 class="text-4xl font-black italic tracking-tight mb-4">Request Successfully Routed!</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 mb-12">
+                <div class="p-6 bg-white border rounded-xl italic">
+                    <span class="font-bold block">Brian Reif</span>
+                    <span class="text-[10px] text-indigo-600 uppercase font-black">Executive Owner</span>
                 </div>
-                <h2 class="text-4xl font-black italic tracking-tighter text-slate-950">Request Successfully Routed!</h2>
-            </div>
-
-            <div class="mb-16">
-                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-8 italic border-b pb-2 inline-block">Core Platform Leadership & Engineering</h3>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200">
-                        <span class="block text-xl font-black italic text-slate-900">Brian Reif</span>
-                        <span class="block text-xs text-indigo-700 font-bold mb-4 italic">Director, Data Engineering</span>
-                        <p class="text-[11px] text-slate-600 italic">Strategic leadership and overarching vision.</p>
-                    </div>
-                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200">
-                        <span class="block text-xl font-black italic text-slate-900">Lancy L Quadros</span>
-                        <span class="block text-xs text-indigo-700 font-bold mb-4 italic">Lead Product Mgr</span>
-                        <p class="text-[11px] text-slate-600 italic">Infrastructure and Platform Engineering Lead.</p>
-                    </div>
-                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200">
-                        <span class="block text-xl font-black italic text-slate-900">Adam M Portman</span>
-                        <span class="block text-xs text-indigo-700 font-bold mb-4 italic">Sr. Data Engineer</span>
-                        <p class="text-[11px] text-slate-600 italic">Specialization in report building and data architecture.</p>
-                    </div>
+                <div class="p-6 bg-white border rounded-xl italic">
+                    <span class="font-bold block">Lancy L Quadros</span>
+                    <span class="text-[10px] text-indigo-600 uppercase font-black">Engineering Lead</span>
+                </div>
+                <div class="p-6 bg-white border rounded-xl italic">
+                    <span class="font-bold block">Adam M Portman</span>
+                    <span class="text-[10px] text-indigo-600 uppercase font-black">Sr. Engineering Expert</span>
                 </div>
             </div>
-
-            <div class="text-center">
-                <button onclick="location.reload()" class="bg-slate-900 text-white font-bold py-4 px-12 rounded-2xl uppercase tracking-widest text-sm">Start New Request</button>
-            </div>
+            <button onclick="location.reload()" class="bg-slate-900 text-white px-8 py-3 rounded-lg font-bold uppercase italic">Start New Request</button>
         </section>
 
     </main>
 
     <script>
-        const AIRTABLE_WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/genericWebhook/appg6FxdMBA9WWkUy/wflbYA4lQ2OZUo5ee/wtrpqOcmceNhbuwcW";
+        const WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/genericWebhook/appg6FxdMBA9WWkUy/wflbYA4lQ2OZUo5ee/wtrpqOcmceNhbuwcW";
 
         function goPath(id) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
-            window.scrollTo(0, 0);
+            window.scrollTo(0,0);
         }
 
-        function goBack(id) {
-            document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
-            document.getElementById(id).classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function toggleTesterEmail(show) {
-            document.getElementById('tester-container').classList.toggle('hidden', !show);
-        }
+        function goBack(id) { goPath(id); }
 
         async function submitToAirtable(path) {
-            let payload = {};
-            if (path === 'path-broken') {
-                payload = {
-                    RequestType: "Broken Report",
-                    ReferenceNumber: document.getElementById('inc-num').value,
-                    Description: document.getElementById('desc-broken').value,
-                    RequesterEmail: document.getElementById('email-broken').value,
-                    TesterEmail: document.getElementById('tester-email-val').value
-                };
-            } else if (path === 'path-new') {
-                payload = {
-                    RequestType: "Incremental Request",
-                    ReferenceNumber: document.getElementById('wbse-num').value,
-                    Description: document.getElementById('desc-new').value,
-                    RequesterEmail: document.getElementById('email-new').value,
-                    DateNeeded: document.getElementById('date-new').value
-                };
-            } else if (path === 'path-platform') {
-                payload = {
-                    RequestType: "Platform Support",
-                    Description: document.getElementById('desc-platform').value,
-                    RequesterEmail: document.getElementById('email-platform').value,
-                    DateNeeded: document.getElementById('date-platform').value
-                };
-            }
+            const getVal = (id) => document.getElementById(id) ? document.getElementById(id).value : "";
+            
+            let payload = {
+                RequestType: path === 'path-broken' ? 'Broken Report' : (path === 'path-new' ? 'Incremental Request' : 'Platform Support'),
+                ReferenceNumber: path === 'path-broken' ? getVal('inc-num') : getVal('wbse-num'),
+                Description: path === 'path-broken' ? getVal('desc-broken') : (path === 'path-new' ? getVal('desc-new') : getVal('desc-platform')),
+                RequesterEmail: path === 'path-broken' ? getVal('email-broken') : (path === 'path-new' ? getVal('email-new') : getVal('email-platform')),
+                DateNeeded: getVal('date-new') || getVal('date-platform') || ""
+            };
+
+            console.log("SENDING DATA:", payload);
 
             try {
-                fetch(AIRTABLE_WEBHOOK_URL, { method: "POST", body: JSON.stringify(payload) });
+                // Use mode: 'no-cors' to bypass the GitHub/Airtable security block
+                await fetch(WEBHOOK_URL, {
+                    method: "POST",
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                // Move to success screen
                 document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
                 document.getElementById('final').classList.remove('hidden');
-            } catch (e) { console.error(e); }
+            } catch (error) {
+                console.error("CATCH ERROR:", error);
+            }
         }
     </script>
 </body>
