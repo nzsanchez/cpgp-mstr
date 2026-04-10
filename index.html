@@ -201,70 +201,73 @@
 
     </main>
 
-    <script>
-        const AIRTABLE_WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/genericWebhook/appg6FxdMBA9WWkUy/wflbYA4lQ2OZUo5ee/wtrpqOcmceNhbuwcW";
+   <script>
+    const AIRTABLE_WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/genericWebhook/appg6FxdMBA9WWkUy/wflbYA4lQ2OZUo5ee/wtrpqOcmceNhbuwcW";
 
-        function goPath(id) {
+    function goPath(id) {
+        document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
+        document.getElementById(id).classList.remove('hidden');
+        window.scrollTo(0, 0);
+    }
+
+    function goBack(id) {
+        document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
+        document.getElementById(id).classList.remove('hidden');
+        window.scrollTo(0, 0);
+    }
+
+    function toggleTesterEmail(show) {
+        document.getElementById('tester-container').classList.toggle('hidden', !show);
+    }
+
+    async function submitToAirtable(path) {
+        let payload = {};
+
+        // Only grab data from the path the user is actually on
+        if (path === 'path-broken') {
+            payload = {
+                RequestType: "Broken Report",
+                ReferenceNumber: document.getElementById('inc-num').value,
+                Description: document.getElementById('desc-broken').value,
+                RequesterEmail: document.getElementById('email-broken').value,
+                TesterEmail: document.getElementById('tester-email-val')?.value || "No Tester"
+            };
+        } else if (path === 'path-new') {
+            payload = {
+                RequestType: "Incremental Request",
+                ReferenceNumber: document.getElementById('wbse-num').value,
+                Description: document.getElementById('desc-new').value,
+                RequesterEmail: document.getElementById('email-new').value,
+                DateNeeded: document.getElementById('date-new').value
+            };
+        } else if (path === 'path-platform') {
+            payload = {
+                RequestType: "Platform Support",
+                Description: document.getElementById('desc-platform').value,
+                RequesterEmail: document.getElementById('email-platform').value,
+                DateNeeded: document.getElementById('date-platform').value
+            };
+        }
+
+        try {
+            // We use 'no-cors' to ensure the browser doesn't block the request to Airtable
+            await fetch(AIRTABLE_WEBHOOK_URL, {
+                method: "POST",
+                mode: "no-cors", 
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+            
+            // Successfully sent! Now move to the success dashboard
             document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
-            document.getElementById(id).classList.remove('hidden');
+            document.getElementById('final').classList.remove('hidden');
             window.scrollTo(0, 0);
+
+        } catch (error) {
+            console.error("Submission error:", error);
+            alert("Connection error. Please try again.");
         }
-
-        function goBack(id) {
-            document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
-            document.getElementById(id).classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function toggleTesterEmail(show) {
-            document.getElementById('tester-container').classList.toggle('hidden', !show);
-        }
-
-        async function submitToAirtable(path) {
-            let payload = {};
-
-            try {
-                if (path === 'path-broken') {
-                    payload = {
-                        RequestType: "Broken Report",
-                        ReferenceNumber: document.getElementById('inc-num').value,
-                        Description: document.getElementById('desc-broken').value,
-                        RequesterEmail: document.getElementById('email-broken').value,
-                        TesterEmail: document.getElementById('tester-email-val').value || "None"
-                    };
-                } else if (path === 'path-new') {
-                    payload = {
-                        RequestType: "Incremental Request",
-                        ReferenceNumber: document.getElementById('wbse-num').value,
-                        Description: document.getElementById('desc-new').value,
-                        RequesterEmail: document.getElementById('email-new').value,
-                        DateNeeded: document.getElementById('date-new').value
-                    };
-                } else if (path === 'path-platform') {
-                    payload = {
-                        RequestType: "Platform Support",
-                        Description: document.getElementById('desc-platform').value,
-                        RequesterEmail: document.getElementById('email-platform').value,
-                        DateNeeded: document.getElementById('date-platform').value
-                    };
-                }
-
-                // Actually send the data
-                await fetch(AIRTABLE_WEBHOOK_URL, {
-                    method: "POST",
-                    body: JSON.stringify(payload)
-                });
-
-                // Transition to success screen
-                document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
-                document.getElementById('final').classList.remove('hidden');
-                window.scrollTo(0, 0);
-
-            } catch (error) {
-                console.error("Airtable Error:", error);
-                alert("Submission error. Please ensure all fields are filled.");
-            }
-        }
-    </script>
+    }
+</script>
 </body>
 </html>
