@@ -4,17 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DPP | MicroStrategy Support Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    },
+                },
+            },
+        };
+    </script>
     <style>
         .hidden { display: none; }
         .fade-in { animation: fadeIn 0.4s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         .disney-dark { background-color: #0c1c3c; }
         .disney-blue { background-color: #0063e5; }
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        html, body, button, input, textarea, select {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen text-slate-900 leading-normal">
+<body class="bg-slate-50 min-h-screen text-slate-900 leading-normal antialiased font-sans">
 
     <nav class="disney-dark py-4 px-8 flex justify-between items-center shadow-lg text-white">
         <div class="flex items-center space-x-2">
@@ -78,11 +94,11 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block font-bold mb-2 italic text-slate-700 uppercase text-[10px] tracking-widest italic" for="inc-num">Incident Number (INC#)</label>
-                        <input type="text" name="IncidentNumber" id="inc-num" placeholder="INC#######" class="w-full p-4 border rounded-xl bg-slate-50 outline-none focus:ring-2 focus:ring-blue-500 font-mono">
+                        <input type="text" name="IncidentNumber" id="inc-num" placeholder="INC#######" class="w-full p-4 border rounded-xl bg-slate-50 outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                     <div>
                         <label class="block font-bold mb-2 italic text-slate-700 uppercase text-[10px] tracking-widest italic" for="wbse-num">Billing Code (WBSE)</label>
-                        <input type="text" name="BillingCode" id="wbse-num" placeholder="Enter WBSE..." class="w-full p-4 border rounded-xl bg-slate-50 outline-none focus:ring-2 focus:ring-blue-500 font-mono">
+                        <input type="text" name="BillingCode" id="wbse-num" placeholder="Enter WBSE..." class="w-full p-4 border rounded-xl bg-slate-50 outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                 </div>
                 <div>
@@ -101,55 +117,67 @@
         <section id="final" class="page-section hidden fade-in py-12">
             <div class="text-center mb-12">
                 <div class="h-20 w-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                    </svg>
                 </div>
-                <h2 class="text-4xl font-black italic tracking-tighter text-slate-950 uppercase italic">Request Successfully Routed!</h2>
-                <p class="text-slate-600 mt-4 text-lg italic max-w-3xl mx-auto leading-relaxed italic">
+                <h2 class="text-4xl font-black italic tracking-tighter text-slate-950">Request Successfully Routed!</h2>
+                <p class="text-slate-600 mt-4 text-lg italic max-w-3xl mx-auto leading-relaxed">
                     Your submission has been logged within the Data Product Platforms environment. Our leadership and engineering teams have been notified for triage and resource allocation.
                 </p>
             </div>
 
             <div class="mb-16">
-                <h3 class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-8 italic border-b border-slate-200 pb-2 inline-block italic">Core Platform Leadership & Engineering</h3>
+                <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-8 italic border-b pb-2 inline-block font-sans">Core Platform Leadership & Engineering</h3>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    
-                    <div class="p-8 bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+
+                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
                         <div>
-                            <span class="block text-slate-400 uppercase text-[9px] font-bold tracking-[0.2em] mb-1 italic">Executive Owner</span>
-                            <span class="block text-2xl font-black italic text-slate-900 tracking-tight leading-tight italic italic">Brian Reif</span>
-                            <span class="block text-xs text-indigo-700 font-bold mb-4 italic tracking-widest uppercase italic">Director, Data Engineering</span>
-                            <p class="text-[11px] text-slate-600 leading-relaxed mb-6 font-medium italic italic">
-                                Brian is the primary executive owner of the platform services team within DPP. He provides strategic leadership and overarching vision for the platform's engineering direction and service capabilities.
+                            <span class="block text-slate-400 uppercase text-[10px] font-bold tracking-widest mb-1">Executive Owner</span>
+                            <span class="block text-xl font-black italic text-slate-900 tracking-tight leading-tight">Brian Reif</span>
+                            <span class="block text-xs text-indigo-700 font-bold mb-4 italic">Director, Data Engineering</span>
+                            <p class="text-[11px] text-slate-600 leading-relaxed mb-6 font-medium italic">
+                                Brian is the primary executive owner of the platform services team within DPP. He provides strategic leadership and overarching vision for the platform's engineering direction and service capabilities. He is also the owner of all contracts and licenses with the vendor.
                             </p>
                         </div>
+                        <a href="mailto:brian.e.reif@disney.com" class="block text-[10px] font-bold text-blue-700 bg-blue-50 py-2 px-3 rounded-lg text-center hover:bg-blue-100 transition tracking-tight">brian.e.reif@disney.com</a>
                     </div>
 
-                    <div class="p-8 bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
                         <div>
-                            <span class="block text-slate-400 uppercase text-[9px] font-bold tracking-[0.2em] mb-1 italic">Engineering Lead</span>
-                            <span class="block text-2xl font-black italic text-slate-900 tracking-tight leading-tight italic italic">Lancy L Quadros</span>
-                            <span class="block text-xs text-indigo-700 font-bold mb-4 italic tracking-widest uppercase italic">Lead Product Mgr</span>
-                            <p class="text-[11px] text-slate-600 leading-relaxed mb-6 font-medium italic italic">
+                            <span class="block text-slate-400 uppercase text-[10px] font-bold tracking-widest mb-1">Engineering Lead</span>
+                            <span class="block text-xl font-black italic text-slate-900 tracking-tight leading-tight">Lancy L Quadros</span>
+                            <span class="block text-xs text-indigo-700 font-bold mb-4 italic">Lead Product Mgr</span>
+                            <p class="text-[11px] text-slate-600 leading-relaxed mb-6 font-medium italic">
                                 Lancy is the main lead for Infrastructure Engineering and Platform Engineering. He manages the foundational infrastructure, system architecture, and overall platform performance.
                             </p>
                         </div>
+                        <a href="mailto:lancy.quadros@disney.com" class="block text-[10px] font-bold text-blue-700 bg-blue-50 py-2 px-3 rounded-lg text-center hover:bg-blue-100 transition tracking-tight">lancy.quadros@disney.com</a>
                     </div>
 
-                    <div class="p-8 bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
                         <div>
-                            <span class="block text-slate-400 uppercase text-[9px] font-bold tracking-[0.2em] mb-1 italic text-amber-600">Sr. Engineering Expert</span>
-                            <span class="block text-2xl font-black italic text-slate-900 tracking-tight leading-tight italic italic">Adam M Portman</span>
-                            <span class="block text-xs text-indigo-700 font-bold mb-4 italic tracking-widest uppercase italic">Sr. Data Engineer</span>
-                            <p class="text-[11px] text-slate-600 leading-relaxed mb-6 font-medium italic italic">
+                            <span class="block text-slate-400 uppercase text-[10px] font-bold tracking-widest mb-1">Sr. Engineering Expert</span>
+                            <span class="block text-xl font-black italic text-slate-900 tracking-tight leading-tight">Adam M Portman</span>
+                            <span class="block text-xs text-indigo-700 font-bold mb-4 italic">Sr. Data Engineer</span>
+                            <p class="text-[11px] text-slate-600 leading-relaxed mb-6 font-medium italic">
                                 Adam is our Senior Data Engineer with a strong specialization in report building and data solutions architecture. He supports detailed data product development and advanced report request fulfillment.
                             </p>
                         </div>
+                        <a href="mailto:adam.portman@disney.com" class="block text-[10px] font-bold text-blue-700 bg-blue-50 py-2 px-3 rounded-lg text-center hover:bg-blue-100 transition tracking-tight">adam.portman@disney.com</a>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center">
-                <button onclick="location.reload()" class="bg-slate-900 text-white font-bold py-4 px-12 rounded-2xl uppercase tracking-widest text-xs transform hover:-translate-y-1 transition-all italic italic">Start New Request</button>
+            <div class="text-center space-y-6">
+                <button onclick="location.reload()" class="bg-slate-900 text-white font-bold py-4 px-12 rounded-2xl shadow-2xl hover:bg-indigo-600 transition-all uppercase tracking-widest text-sm transform hover:-translate-y-1 active:scale-95">
+                    Start New Request
+                </button>
+                <div class="block">
+                    <button type="button" onclick="goBack('intro')" class="text-xs font-black text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors border-b border-transparent hover:border-slate-900 pb-1 italic">
+                        ← Return to Portal Home
+                    </button>
+                </div>
             </div>
         </section>
     </main>
@@ -169,19 +197,19 @@
                 requestType.value = 'Broken Report';
                 title.innerText = "Broken Report Intake";
                 guidance.className = "p-8 rounded-r-2xl shadow-sm space-y-4 border-l-4 border-blue-500 bg-blue-50";
-                guidanceText.innerText = 'This support path is strictly reserved for existing production reports previously functional but currently experiencing technical failures. Covered under Ongoing Maintenance (OGM).';
+                guidanceText.innerText = 'This support path is strictly reserved for existing production reports that were previously functional but are currently experiencing technical failures or data discrepancies. All troubleshooting and restoration efforts for these assets are fully covered under Ongoing Maintenance (OGM) and Sustainment Funding, meaning no incremental billing is required. However, the timeline for resolution is dictated by business impact and team capacity; "Critical" status is only granted if a designated business tester is available for real-time triage. Issues without an active tester or those that have existed for extended periods will be queued into the standard sustainment backlog for resolution.';
                 btn.className = "w-full disney-blue text-white font-bold py-4 rounded-xl shadow-lg hover:opacity-90 transition uppercase tracking-widest italic font-black";
             } else if (path === 'path-new') {
                 requestType.value = 'Incremental Request';
                 title.innerText = "Incremental Request Intake";
                 guidance.className = "p-8 rounded-r-2xl shadow-sm space-y-4 border-l-4 border-indigo-600 bg-indigo-50";
-                guidanceText.innerText = 'For brand-new reports or columns. These fall outside standard maintenance and require New Funding Approval before work commences.';
+                guidanceText.innerText = 'An Incremental Request is formally defined as any requirement for brand-new reports, additional data columns, new data views, or supplemental logic that does not exist in the production environment today. Because these requests represent an expansion of the established platform scope, they fall outside the boundaries of standard maintenance and require New Funding Approval before work can commence. Regardless of the requester’s organizational level, every incremental project must undergo a formal discovery phase to determine the necessary resource allocation and budget requirements. Once submitted, the DPP team will review the business case and provide a comprehensive effort estimate to facilitate the funding approval process.';
                 btn.className = "w-full bg-indigo-600 text-white font-bold py-4 rounded-xl shadow-lg hover:opacity-90 transition uppercase tracking-widest italic font-black";
             } else {
                 requestType.value = 'Platform Support';
                 title.innerText = "Platform Support Intake";
                 guidance.className = "p-8 rounded-r-2xl shadow-sm space-y-4 border-l-4 border-amber-400 bg-amber-50";
-                guidanceText.innerText = 'Dedicated to environment-level infrastructure and Cloud performance. Intended for users experiencing connectivity failures or platform latency.';
+                guidanceText.innerText = 'This specialized support channel is dedicated to environment-level infrastructure, MicroStrategy Cloud performance, and broad system accessibility issues. It is intended for users experiencing connectivity failures, platform-wide latency, or specific administrative requirements related to the cloud environment itself. While infrastructure maintenance is a core service provided by the DPP team, any major environmental upgrades or custom architectural changes may require further review for strategic alignment. Please provide a detailed account of the environment behavior to ensure our engineering leads can accurately assess the system health and prioritize the stability of the platform.';
                 btn.className = "w-full bg-amber-600 text-white font-bold py-4 rounded-xl shadow-lg hover:opacity-90 transition uppercase tracking-widest italic font-black";
             }
             window.scrollTo(0,0);
