@@ -201,71 +201,76 @@
 
     </main>
 
-   <script>
+  <script>
     const AIRTABLE_WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/genericWebhook/appg6FxdMBA9WWkUy/wflbYA4lQ2OZUo5ee/wtrpqOcmceNhbuwcW";
 
     function goPath(id) {
         document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
-        document.getElementById(id).classList.remove('hidden');
+        const target = document.getElementById(id);
+        if (target) target.classList.remove('hidden');
         window.scrollTo(0, 0);
     }
 
     function goBack(id) {
-        document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
-        document.getElementById(id).classList.remove('hidden');
-        window.scrollTo(0, 0);
+        goPath(id);
     }
 
     function toggleTesterEmail(show) {
-        document.getElementById('tester-container').classList.toggle('hidden', !show);
+        const container = document.getElementById('tester-container');
+        if (container) container.classList.toggle('hidden', !show);
     }
 
     async function submitToAirtable(path) {
-        let payload = {};
+        console.log("Starting submission for path:", path);
+        
+        // Use helper function to safely get values without crashing the script
+        const getVal = (id) => document.getElementById(id) ? document.getElementById(id).value : "";
 
-        // Only grab data from the path the user is actually on
+        let payload = {
+            RequestType: "",
+            ReferenceNumber: "",
+            Description: "",
+            RequesterEmail: "",
+            DateNeeded: "",
+            TesterEmail: ""
+        };
+
         if (path === 'path-broken') {
-            payload = {
-                RequestType: "Broken Report",
-                ReferenceNumber: document.getElementById('inc-num').value,
-                Description: document.getElementById('desc-broken').value,
-                RequesterEmail: document.getElementById('email-broken').value,
-                TesterEmail: document.getElementById('tester-email-val')?.value || "No Tester"
-            };
+            payload.RequestType = "Broken Report";
+            payload.ReferenceNumber = getVal('inc-num');
+            payload.Description = getVal('desc-broken');
+            payload.RequesterEmail = getVal('email-broken');
+            payload.TesterEmail = getVal('tester-email-val');
         } else if (path === 'path-new') {
-            payload = {
-                RequestType: "Incremental Request",
-                ReferenceNumber: document.getElementById('wbse-num').value,
-                Description: document.getElementById('desc-new').value,
-                RequesterEmail: document.getElementById('email-new').value,
-                DateNeeded: document.getElementById('date-new').value
-            };
+            payload.RequestType = "Incremental Request";
+            payload.ReferenceNumber = getVal('wbse-num');
+            payload.Description = getVal('desc-new');
+            payload.RequesterEmail = getVal('email-new');
+            payload.DateNeeded = getVal('date-new');
         } else if (path === 'path-platform') {
-            payload = {
-                RequestType: "Platform Support",
-                Description: document.getElementById('desc-platform').value,
-                RequesterEmail: document.getElementById('email-platform').value,
-                DateNeeded: document.getElementById('date-platform').value
-            };
+            payload.RequestType = "Platform Support";
+            payload.Description = getVal('desc-platform');
+            payload.RequesterEmail = getVal('email-platform');
+            payload.DateNeeded = getVal('date-platform');
         }
 
+        console.log("Final Payload:", payload);
+
         try {
-            // We use 'no-cors' to ensure the browser doesn't block the request to Airtable
-            await fetch(AIRTABLE_WEBHOOK_URL, {
+            // Send to Airtable
+            const response = await fetch(AIRTABLE_WEBHOOK_URL, {
                 method: "POST",
                 mode: "no-cors", 
-                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
             });
-            
-            // Successfully sent! Now move to the success dashboard
+
+            // If we get here, move to success screen
             document.querySelectorAll('.page-section').forEach(s => s.classList.add('hidden'));
             document.getElementById('final').classList.remove('hidden');
             window.scrollTo(0, 0);
-
         } catch (error) {
-            console.error("Submission error:", error);
-            alert("Connection error. Please try again.");
+            console.error("Transmission Error:", error);
+            alert("The portal couldn't reach Airtable. Check your internet or Webhook URL.");
         }
     }
 </script>
