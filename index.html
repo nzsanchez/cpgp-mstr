@@ -86,10 +86,11 @@
                 method="POST"
                 action="https://hooks.airtable.com/workflows/v1/genericWebhook/appg6FxdMBA9WWkUy/wflbYA4lQ2OZUo5ee/wtrpqOcmceNhbuwcW"
                 enctype="application/x-www-form-urlencoded"
-                target="_blank"
+                target="airtable-webhook-frame"
                 class="space-y-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm"
                 onsubmit="afterIntakeSubmit()"
             >
+                <iframe name="airtable-webhook-frame" id="airtable-webhook-frame" title="Airtable submission" tabindex="-1" aria-hidden="true" class="hidden"></iframe>
                 <input type="hidden" name="RequestType" id="request-type" value="">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
